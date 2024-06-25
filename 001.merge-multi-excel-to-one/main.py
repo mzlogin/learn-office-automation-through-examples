@@ -7,6 +7,8 @@ def process(src_folder, dst_file):
     dst_sheet = dst_workbook.active
     # 表头占几行
     header_rows = 1
+
+    total_rows = 0
     
     for dir_path, dir_names, file_names in os.walk(src_folder):
         for file_name in file_names:
@@ -23,11 +25,13 @@ def process(src_folder, dst_file):
                         continue
 
                     dst_sheet.append(process_row(row))
-
+                    total_rows += 1
+                print('Rows in this file: %d' % (src_row_num - header_rows))
                 src_workbook.close()
     
     dst_workbook.save(dst_file)
     dst_workbook.close()
+    print('Total rows: %d' % total_rows)
 
 # 对源数据行做一些处理，然后返回将的数据元组
 def process_row(row):
