@@ -33,7 +33,7 @@ def process(src_folder, dst_file):
     dst_workbook.close()
     print('Total rows: %d' % total_rows)
 
-# 对源数据行做一些处理，然后返回将的数据元组
+# 对源数据行做一些处理，然后返回结果数据元组
 def process_row(row):
 
     # 直接返回原始数据
