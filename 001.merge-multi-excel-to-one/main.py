@@ -5,7 +5,11 @@ import traceback
 def process(src_folder, dst_file):
     dst_workbook = openpyxl.Workbook()
     dst_sheet = dst_workbook.active
-    # 表头占几行
+
+    # 设置目标表格表头，可选
+    dst_sheet.append(['列1', '列2', '列3'])
+
+    # 源表格表头占几行
     header_rows = 1
 
     total_rows = 0
