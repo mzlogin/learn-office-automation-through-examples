@@ -1,6 +1,6 @@
 # learn-office-automation-through-examples
 
-通过实例学办公自动化，小白适用，by Python。
+通过实例学办公自动化，小白适用，mainly through Python。
 
 **实例列表更新-ing。**
 
@@ -8,12 +8,13 @@
 
 ## 实例列表
 
-|序号|实例名称|实例描述|
-|---|---|---|
-|[001](./001.merge-multi-excel-to-one/)|合并多个 Excel 文件|将多个 Excel 文件里的数据合并到一个 Excel 文件中|
-|[002](./002.batch-gen-qrcode/)|批量生成二维码|将网址列表批量生成指定名称的二维码图片|
+|序号|实例名称|实例描述|语言|
+|---|---|---|---|
+|[001](./001.merge-multi-excel-to-one/)|合并多个 Excel 文件|将多个 Excel 文件里的数据合并到一个 Excel 文件中|Python|
+|[002](./002.batch-gen-qrcode/)|批量生成二维码|将网址列表批量生成指定名称的二维码图片|Python|
+|[003](./003.batch-gen-xiaoe-qrcode/)|批量生成小鹅通课程分享二维码|批量生成小鹅通课程分享二维码|JavaScript / Python|
 
-## 使用方法
+## Python 实现的小工具使用方法
 
 1. 使用 git 克隆本仓库到本地，或直接在页面找到 Download ZIP 下载本仓库到本地并解压；
 
