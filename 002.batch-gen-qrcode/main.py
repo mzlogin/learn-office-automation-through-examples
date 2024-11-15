@@ -6,4 +6,4 @@ if __name__ == '__main__':
     for line in f.readlines():
         print(line)
         params = line.split(',')
-        qrcode.make(params[1]).save('%s.png' % params[0])
+        qrcode.make(params[1].strip()).save('%s.png' % params[0])
