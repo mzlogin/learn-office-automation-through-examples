@@ -31,8 +31,7 @@ async function genEachQrcode(element, index, elements) {
             await sleep(100);
         } else {
             // console.log(targetText);
-            // vim 提取 %s/.*\n.*\n.*\n^\s*\(.*\)\n.*点击学习：\(.*\)\n/\1,\2/g
-            var result = targetText.match(/.*\n.*\n.*\n\s*(.*)\n.*点击学习：(.*)\n/);
+            var result = targetText.match(/.*\n.*\n.*\n\s*(.*)\n.*点击.*：(.*)\n/);
             console.log(result[1] + ',' + result[2]);
             break;
         }
@@ -64,6 +63,9 @@ async function batchGenQrcode() {
     } else if (window.location.href.match('https://admin.xiaoe-tech.com/t/course/big_column/detail/.*')) {
         // 大专栏目录
         elems = document.querySelectorAll('.ss-table__fixed-right > .ss-table__fixed-body-wrapper > .ss-table__body > tbody > tr > td:nth-child(6) > .cell > .ss-multi-operate-table__cell > .ss-multi-operate-table__cell-inner > .ss-multi-operate__cell-operates-wrap > div:nth-child(3) > .ss-button');
+    } else if (window.location.href.match('https://admin.xiaoe-tech.com/t/course/camp_pro/detail/*')) {
+        // 课程目录
+        elems = document.querySelectorAll('span:nth-child(3) > .ss-button');
     } else {
         alert('不支持的页面');
     }
