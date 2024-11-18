@@ -1,4 +1,6 @@
-const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+
+let resultDict = {};
 
 async function asyncForEach(array, callback) {
     for (let index = 0; index < array.length; index++) {
@@ -32,7 +34,8 @@ async function genEachQrcode(element, index, elements) {
         } else {
             // console.log(targetText);
             var result = targetText.match(/.*\n.*\n.*\n\s*(.*)\n.*点击.*：(.*)\n/);
-            console.log(result[1] + ',' + result[2]);
+            // console.log(result[1] + ',' + result[2]);
+            resultDict[Object.entries(resultDict).length] = result[1] + ',' + result[2];
             break;
         }
     } while (true);
@@ -65,12 +68,31 @@ async function batchGenQrcode() {
         elems = document.querySelectorAll('.ss-table__fixed-right > .ss-table__fixed-body-wrapper > .ss-table__body > tbody > tr > td:nth-child(6) > .cell > .ss-multi-operate-table__cell > .ss-multi-operate-table__cell-inner > .ss-multi-operate__cell-operates-wrap > div:nth-child(3) > .ss-button');
     } else if (window.location.href.match('https://admin.xiaoe-tech.com/t/course/camp_pro/detail/*')) {
         // 课程目录
-        elems = document.querySelectorAll('span:nth-child(3) > .ss-button');
+        // step1 展开章节
+        let chapterTitles = document.querySelectorAll('.chapter-title-name');
+        for (const chapterTitle of chapterTitles) {
+            chapterTitle.click();
+            await sleep(100);
+        }
+        // step2 等待能找到的小节数匹配到总数
+        let nodeCount = parseInt(document.querySelector('.member-count').textContent.replace(/[^0-9]/ig, ''));
+        console.log('小节总数：' + nodeCount);
+        do {
+            await sleep(1000);
+            console.log('等待能找到的小节数匹配到总数');
+            elems = document.querySelectorAll('span:nth-child(3) > .ss-button');
+        } while (nodeCount !== elems.length);
     } else {
         alert('不支持的页面');
     }
         
     await asyncForEach(elems, genEachQrcode);
+
+    console.log('start print result, count: ' + Object.entries(resultDict).length + ' ==============');
+
+    for (const [key, value] of Object.entries(resultDict)){
+        console.log(key + ',' + value)
+    }
 }
 
 await batchGenQrcode();
