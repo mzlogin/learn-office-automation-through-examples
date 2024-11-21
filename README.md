@@ -13,6 +13,7 @@
 |[001](./001.merge-multi-excel-to-one/)|合并多个 Excel 文件|将多个 Excel 文件里的数据合并到一个 Excel 文件中|Python|
 |[002](./002.batch-gen-qrcode/)|批量生成二维码|将网址列表批量生成指定名称的二维码图片|Python|
 |[003](./003.batch-gen-xiaoe-qrcode/)|批量生成小鹅通课程分享二维码|批量生成小鹅通课程分享二维码|JavaScript / Python|
+|[004](./004.sticky-chapter-node-title/)|自动组合匹配章节标题|自动组合匹配章节标题|Python|
 
 ## Python 实现的小工具使用方法
 
