@@ -1,6 +1,6 @@
-# learn-office-automation-through-examples
+# 办公自动化实例
 
-通过实例学办公自动化，小白适用，mainly through Python。
+办公自动化实例，mainly through Python。
 
 **实例列表更新-ing。**
 
