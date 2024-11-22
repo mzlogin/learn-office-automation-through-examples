@@ -14,7 +14,8 @@ for row in sheet.iter_rows():
         nodeName = row[1].value
         ifNode = True
     if ifNode:
-        sheet.cell(row=row[0].row, column=4).value = chapterName + nodeName + ' ' + row[2].value
+        if row[2].value is not None:
+            sheet.cell(row=row[0].row, column=4).value = chapterName + nodeName + ' ' + row[2].value
     else:
         sheet.cell(row=row[0].row, column=5).value = chapterName + nodeName + row[2].value
 wb.save('test.xlsx')
