@@ -6,4 +6,7 @@ if __name__ == '__main__':
     for line in f.readlines():
         print(line)
         params = line.split(',')
-        qrcode.make(params[1].strip()).save('%s.png' % params[0])
+        fileName = params[0].strip()
+        for i,j in ("/／","\\＼","?？","|︱","\"＂","*＊","<＜",">＞"):
+            fileName = fileName.replace(i,j)
+        qrcode.make(params[1].strip()).save('%s.png' % fileName)
